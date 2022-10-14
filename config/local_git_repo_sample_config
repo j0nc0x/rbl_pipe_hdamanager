@@ -1,0 +1,14 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+	sharedrepository = 1
+[receive]
+	denyNonFastforwards = true
+[remote "origin"]
+	url = https://vfx_posthook:_GITLAB_KEY_STRING_GOES_HERE@gitlab.example.com/RebellionVFX/rbl_pipe_houdini_hdas_synced.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+        # http.version = HTTP/1.1
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
