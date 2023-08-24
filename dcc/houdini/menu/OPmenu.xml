@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menuDocument>
+  <menu>
+    <separatorItem/>
+    <titleItem>
+      <expression>
+current_node = kwargs.get("node", None)
+from rbl_pipe_hdamanager import menu
+return menu.display_main_menu(current_node)
+      </expression>      
+      <label>HDA Manager</label>
+    </titleItem>
+    <titleItem>
+      <expression>
+current_node = kwargs.get("node", None)
+from rbl_pipe_hdamanager import menu
+return menu.publish_locked(current_node)
+      </expression>
+      <label>Publishing Locked</label>
+    </titleItem>
+    <titleItem>
+      <expression>
+current_node = kwargs.get("node", None)
+from rbl_pipe_hdamanager import menu
+return menu.project_locked(current_node)
+      </expression>
+      <label>Publishing Locked to Project</label>
+    </titleItem>
+    <scriptItem id="edit_hda">
+      <label>Edit with HDA Manager</label>
+      <expression>
+current_node = kwargs.get("node", None)
+from rbl_pipe_hdamanager import menu
+return menu.display_make_editable(current_node)
+      </expression>
+      <scriptCode><![CDATA[
+from rbl_pipe_hdamanager import menu
+import hdefereval
+current_node = kwargs.get("node", None)
+hdefereval.executeDeferred(menu.make_editable, current_node)
+      ]]>
+      </scriptCode>
+    </scriptItem>
+    <scriptItem id="discard_edit_hda">
+      <expression>
+current_node = kwargs.get("node", None)      
+from rbl_pipe_hdamanager import menu
+return menu.display_discard_editable(current_node)
+      </expression>    
+      <label>Discard Definition</label>
+      <scriptCode><![CDATA[
+from rbl_pipe_hdamanager import menu
+import hdefereval
+current_node = kwargs.get("node", None)
+hdefereval.executeDeferred(menu.discard_editable, current_node)
+      ]]>
+      </scriptCode>
+    </scriptItem>    
+    <scriptItem id="configure_hda">
+      <expression>
+current_node = kwargs.get("node", None)      
+from rbl_pipe_hdamanager import menu
+return menu.display_configure(current_node)
+      </expression>    
+      <label>Configure Definition</label>
+      <scriptCode><![CDATA[
+from rbl_pipe_hdamanager import menu
+import hdefereval
+current_node = kwargs.get("node", None)
+hdefereval.executeDeferred(menu.configure, current_node)
+      ]]>
+      </scriptCode>
+    </scriptItem>
+    <scriptItem id="publish_hda">
+      <expression>
+current_node = kwargs.get("node", None)      
+from rbl_pipe_hdamanager import menu
+return menu.display_publish(current_node)
+      </expression>    
+      <label>Publish Definition</label>
+      <scriptCode><![CDATA[
+from rbl_pipe_hdamanager import menu
+import hdefereval
+current_node = kwargs.get("node", None)
+hdefereval.executeDeferred(menu.publish, current_node)
+      ]]>
+      </scriptCode>
+    </scriptItem>
+    <scriptItem id="history_hda">
+      <label>Release History</label>
+      <scriptCode><![CDATA[
+from rbl_pipe_hdamanager import menu
+import hdefereval
+current_node = kwargs.get("node", None)
+hdefereval.executeDeferred(menu.history, current_node)
+      ]]>
+      </scriptCode>
+    </scriptItem>    
+  </menu>
+</menuDocument>

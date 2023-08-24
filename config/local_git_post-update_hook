@@ -1,0 +1,26 @@
+#!/bin/bash
+
+git update-server-info
+
+HOOKS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SCRIPT_GIT_DIR="$( dirname "${HOOKS_DIR}" )"
+
+logfile="/tmp/git_hook_${USER}.log"
+echo "========================================="
+echo "post-update script"
+echo "========================================="
+
+echo "=========================================" >> $logfile
+
+echo "ARGS:" >> $logfile
+echo "$@" >> $logfile
+echo "" >> $logfile
+echo "ENV:" >> $logfile
+/bin/env >> $logfile
+
+echo "=========================================" >> $logfile
+
+GIT_DIR="${SCRIPT_GIT_DIR}" git push >> $logfile
+GIT_DIR="${SCRIPT_GIT_DIR}" git push --tags >> $logfile
+
+unset GIT_DIR
